@@ -45,6 +45,8 @@ def parse_RAVDESS_filenames(filename_list):
             elif i==5:
                 filename_data['repetition'] = reference_identifiers_dict['repetition'][identifier]
             elif i==6:
-                filename_data['actor'] = reference_identifiers_dict['actor'][identifier]
-            
+                filename_data['gender'] = reference_identifiers_dict['actor'][identifier]
+                filename_data['actor_id'] = int(identifier)
+
+    return filename_data
             
