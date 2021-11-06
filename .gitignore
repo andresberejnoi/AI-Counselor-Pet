@@ -1,5 +1,4 @@
-*.ipynb
-
 ipynb_checkpoints/
 datasets/
+preprocessed_datasets/
 __pycache__/
