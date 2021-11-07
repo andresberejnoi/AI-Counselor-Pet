@@ -9,7 +9,7 @@ import paralleldots
 import pandas as pd
 import os
 
-from settings import API_KEY
+from settings import PARALLELBOTS_API_KEY
 
 def guess_emotion(text, analyzer):
     '''Analyzer is the sentiment analyzer from nltk, at least for now'''
@@ -43,7 +43,7 @@ class NLTKEmotionAnalyzer(object):
 class ParallelDotsEmotionAnalyzer(object):
     "This should also be simply a function and not a full class"
     def __init__(self):
-        paralleldots.set_api_key(API_KEY)
+        paralleldots.set_api_key(PARALLELBOTS_API_KEY)
 
     def guess_emotion(self, text):
         result = paralleldots.sentiment(text)
