@@ -1,0 +1,13 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+  <h3>Security Holdings Separated by Holding Period</h3>
+
+  <h4>Long Term Holdings (over 366 days)</h4>
+  
+  <p><a href="{{ url_for('home') }}">back home</a></p>
+</div>
+{% endblock %}
