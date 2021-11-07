@@ -144,8 +144,8 @@ def generate_fake_timestamps(num_stamps, time_spacing):
     stamps = []
     time_delta = dt.timedelta(hours=time_spacing)
     start_time = dt.datetime.now()    #uses local time, not UTC
-    start_time.replace(hour=9) 
-    start_time.replace(minute=30) 
+    start_time = start_time.replace(hour=9) 
+    start_time = start_time.replace(minute=30) 
 
     stamps.append(start_time)
     for i in range(1, num_stamps):
