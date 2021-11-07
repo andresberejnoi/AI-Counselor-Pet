@@ -1,6 +1,8 @@
-
 from pathlib import Path 
 import os
+from collections import defaultdict 
+import pandas as pd
+import datetime as dt
 
 reference_identifiers_dict = {
     'modality': {
@@ -133,3 +135,22 @@ def create_df_from_dataset(data_root='./datasets', dataset='ravdess'):
 
     df = pd.DataFrame(dict_for_df)
     return df
+
+def generate_fake_timestamps(num_stamps, time_spacing):
+    '''
+    time_spacing: int, float
+        The number of hours in between timestamps
+    '''
+    stamps = []
+    time_delta = dt.timedelta(hours=time_spacing)
+    start_time = dt.datetime.now()    #uses local time, not UTC
+    start_time.replace(hour=9) 
+    start_time.replace(minute=30) 
+
+    stamps.append(start_time)
+    for i in range(1, num_stamps):
+        start_time += time_delta
+        stamps.append(start_time)
+
+    return stamps
+
