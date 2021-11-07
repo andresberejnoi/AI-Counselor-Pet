@@ -35,10 +35,17 @@ def check_status(endpoint, response, headers):
     else:
         return status, response
 
-def speech_to_text(audio_file_path, headers):
+def speech_to_text(audio_file_path):
+
     '''
     Given an audio file, the function will return the text.
     '''
+
+    headers = {
+            "authorization": "API_KEY",
+            "content-type": "application/json"
+        }
+
 
     upload_url_response = requests.post('https://api.assemblyai.com/v2/upload',
                          headers=headers,
@@ -51,6 +58,7 @@ def speech_to_text(audio_file_path, headers):
     json = {
       "audio_url": upload_url_response.json()['upload_url']
     }
+
     id_response = requests.post(endpoint, json=json, headers=headers)
 
     # perhaps standing in the queue
@@ -86,7 +94,7 @@ def check_if_name_exists_in_time_to_text_file(name_of_interest, time_to_text_fil
     Check if the current file name exists in the time column of time_to_text_file.
     If it exists, return True. If not, return False.
     '''
-    df = pd.read_csv(time_to_text_file)
+    df = pd.read_csv(time_to_text_file, sep='\t')
     time_stamps = [extract_filename(name) for name in df['Time']]
     if name_of_interest in time_stamps:
         return True
@@ -104,11 +112,6 @@ def main():
 
     files_in_path = [i for i in os.listdir(path) if '.csv' not in i]
 
-    headers = {
-            "authorization": "api-key",
-            "content-type": "application/json"
-        }
-
     #    filename = "03-01-01-01-01-02-01.wav"
     time_text_file = os.path.join(path, 'time_text_file.csv')
 
@@ -123,7 +126,7 @@ def main():
             file_exists = check_if_name_exists_in_time_to_text_file(filename, time_text_file)
             if file_exists == False:
                 start_time = time.time()
-                file, text = speech_to_text(os.path.join(path, file), headers)
+                file, text = speech_to_text(os.path.join(path, file))
                 print(text)
                 print("--- %s seconds ---" % (time.time() - start_time))
                 to_write = filename+'\t'+text+'\n'
