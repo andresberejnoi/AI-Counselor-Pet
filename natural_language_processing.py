@@ -45,6 +45,10 @@ class ParallelDotsEmotionAnalyzer(object):
     def __init__(self):
         paralleldots.set_api_key(PARALLELBOTS_API_KEY)
 
-    def guess_emotion(self, text):
+    def guess_sentiment(self, text):
         result = paralleldots.sentiment(text)
+        return result
+
+    def guess_emotion(self, text):
+        result = paralleldots.emotion(text)
         return result
