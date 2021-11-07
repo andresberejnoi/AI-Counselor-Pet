@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+  <h3>Hello there, I'm here...</h3>
+  <hr>
+  <hr>
+  {{ div|safe }}
+  <p>Cool Text</p>
+
+  <form action="/home" method="post">
+    <input type="submit" name="upload" value="Upload Folder">
+    <input type="submit" name="results" value="Results">
+  </form>
+  <p><a href="{{ url_for('results') }}">Go to results page</a></p>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js"
+        crossorigin="anonymous"></script>
+
+{{super()}}
+{% endblock %}
+
