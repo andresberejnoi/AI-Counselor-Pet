@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Name:        convert-audio-to-text.py
-# Purpose:     Convert audio files in a folder to text and output a csv file containing time-stamps and the detected text.
+# Purpose:     Convert audio files in a folder to text and output a txt file (tab separated) containing time-stamps and the detected text.
 #
 # Author:      pzin
 #
@@ -14,6 +14,7 @@ import time
 import requests
 import pandas as pd
 from tkinter import Tk, filedialog
+from settings import ASSEMBLY_API_KEY
 
 def read_file(filename, chunk_size=5242880):
     with open(filename, 'rb') as _file:
@@ -42,7 +43,7 @@ def speech_to_text(audio_file_path):
     '''
 
     headers = {
-            "authorization": "API_KEY",
+            "authorization": ASSEMBLY_API_KEY,
             "content-type": "application/json"
         }
 
@@ -110,10 +111,10 @@ def main():
     root.attributes('-topmost', True) # Opened windows will be active. above all windows despite of selection.
     path          = filedialog.askdirectory()
 
-    files_in_path = [i for i in os.listdir(path) if '.csv' not in i]
+    files_in_path = [i for i in os.listdir(path) if '.txt' not in i]
 
     #    filename = "03-01-01-01-01-02-01.wav"
-    time_text_file = os.path.join(path, 'time_text_file.csv')
+    time_text_file = os.path.join(path, 'time_text_file.txt')
 
     if not os.path.exists(time_text_file):
         with open(time_text_file, 'w') as f:
@@ -132,6 +133,9 @@ def main():
                 to_write = filename+'\t'+text+'\n'
                 f.write(to_write)
         f.close()
+
+    print("-> Finished coverting all your audio files to text.")
+    print("-> Now the text file can be located at ", time_text_file)
 
 if __name__ == '__main__':
     main()

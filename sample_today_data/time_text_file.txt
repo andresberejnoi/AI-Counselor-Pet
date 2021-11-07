@@ -1,0 +1,12 @@
+Time	Text
+ 2021-11-07_09-30-14	The computer keeps breaking down. It's very annoying.
+2021-11-07_10-00-14	The cat doesn't seem to like the new toy. I think I may have to buy him a new fancier toy.
+2021-11-07_10-30-14	"The paper has been accepted in the Journal, so I'm really excited."
+2021-11-07_11-00-14	I tried the llama meat today. It was very weird.
+2021-11-07_11-30-14	This assignment is very difficult. I don't want to continue.
+2021-11-07_12-00-14	"We're gonna have more cake to eat, and it's gonna be my favorite chocolate flavor."
+2021-11-07_12-30-14	My husband keeps messing with me. I'm gonna throw something at him.
+2021-11-07_13-00-14	The tire blew on the way home. It was very inconvenient.
+2021-11-07_13-30-14	It was our first time changing the tire to day. It was very fun.
+2021-11-07_14-00-14	"There is a strange, creepy man following me. I don't know what he wants."
+2021-11-07_14-30-14	I shouldn't have watched a scary movie. It was too much.
