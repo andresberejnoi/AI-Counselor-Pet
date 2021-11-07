@@ -23,7 +23,7 @@ def get_all_file_info_dicts(data_root='./datasets'):
             for dir_file in os.scandir(sub_path):
                 filename = dir_file.name
                 file_info_dict = parse_RAVDESS_filename(filename)
-                file_info_dict['filepath'] = os.path.join(sub_path, filename)
+                file_info_dict['path'] = os.path.join(sub_path, filename)
                 #print(f".-> adding file {filename} to all_info_dicts")
                 all_info_dicts.append(file_info_dict)
 
@@ -32,7 +32,7 @@ def get_all_file_info_dicts(data_root='./datasets'):
 def create_df_from_dataset(data_root='./datasets', dataset='ravdess'):
     all_info_dicts = get_all_file_info_dicts(data_root)
 
-    #code taken from StackOverflow answer here: https://stackoverflow.com/questions/5946236/how-to-merge-multiple-dicts-with-same-key-or-different-key
+    #code for merging dictionaries taken from StackOverflow answer here: https://stackoverflow.com/questions/5946236/how-to-merge-multiple-dicts-with-same-key-or-different-key
     dict_for_df = defaultdict(list)
 
     for d in all_info_dicts: # you can list as many input dicts as you want here
